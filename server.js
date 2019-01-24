@@ -5,7 +5,14 @@ const express = require('express');
 const app = express();
 const port = process.env.PORT || 5000;
 
-var server = app.listen(port, () => {
+// Body Parser
+const bodyParser = require('body-parser');
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+
+const questions = require('./routes/api/questions.js');
+
+let server = app.listen(port, () => {
   console.log(`Server running on port: ${server.address().port}`);
 });
 
@@ -24,16 +31,4 @@ mongoose
     `There was an error when tried to connect to the database: \n $ {err}`;
   });
 
-app.get('/', (req, res) => {
-  res.status(200).send({ message: 'Connected to the port' });
-});
-
-app.get(`/question-details/:id`, async (req, res) => {
-  try {
-    var question = await Question.findById(req.params.id, `-password -__id`);
-    res.send(question);
-  } catch (error) {
-    console.log(error);
-    res.sendStatus(200);
-  }
-});
+app.use('/question', questions);

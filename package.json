@@ -9,6 +9,7 @@
   "author": "Fabian Alvarado",
   "license": "ISC",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "mongoose": "^4.13.18"
   },

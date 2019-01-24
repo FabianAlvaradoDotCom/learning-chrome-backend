@@ -56,4 +56,4 @@ const QuestionSchema = new Schema({
   referenceTime: String
 });
 
-module.exports = Question = mongoose.model('questions', QuestionShema);
+module.exports = Question = mongoose.model('questions', QuestionSchema);
