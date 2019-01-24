@@ -7,7 +7,7 @@ router.get('/', (req, res) => {
   res.status(200).send({ message: 'Connected to the port' });
 });
 
-router.get(`/question-details/:id`, async (req, res) => {
+router.get(`/details/:id`, async (req, res) => {
   try {
     var question = await Question.findById(req.params.id, `-password -__id`);
     res.send(question);
@@ -17,6 +17,7 @@ router.get(`/question-details/:id`, async (req, res) => {
   }
 });
 
-//https://learning-system-fabian.herokuapp.com/question-details/5a6efc56ce10e66a971b5f08
+//https://learning-system-fabian.herokuapp.com
+// /question-details/5a6efc56ce10e66a971b5f08
 
 module.exports = router;
