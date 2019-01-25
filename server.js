@@ -31,4 +31,9 @@ mongoose
     `There was an error when tried to connect to the database: \n $ {err}`;
   });
 
+app.get('/', (req, res) => {
+  res.status(200).json({ message: 'Homepage response' });
+  console.log(`Homepage response`);
+});
+
 app.use('/question', questions);
