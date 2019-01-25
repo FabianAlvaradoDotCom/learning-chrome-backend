@@ -10,6 +10,10 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
+// cors
+const cors = require('cors');
+app.use(cors());
+
 const questions = require('./routes/api/questions.js');
 
 let server = app.listen(port, () => {
