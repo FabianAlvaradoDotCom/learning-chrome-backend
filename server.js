@@ -3,6 +3,7 @@
 //Creating and starting the express server
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const port = process.env.PORT || 5000;
 
 // Body Parser
@@ -11,7 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // cors
-const cors = require('cors');
+
 app.use(cors());
 
 const questions = require('./routes/api/questions.js');
