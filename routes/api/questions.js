@@ -17,10 +17,24 @@ router.get(`/details/:id`, async (req, res) => {
   }
 });
 
-router.get('/random', (req, res) => {
+// Senging the entire database
+
+router.get('/all', (req, res) => {
+  Question.find({}, '-_id')
+    .then(responsesArray => {
+      res.status(200).json({ responsesArray });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
+
+// Sending the request with a particuar subject to find
+router.post('/random', (req, res) => {
+  let subject = req.body.subject;
   let randomPicked = Math.random();
 
-  Question.find({}, '-_id')
+  Question.find({ subject }, '-_id')
     .then(responsesArray => {
       res.status(200).json({
         numberofQuestions: responsesArray.length,
@@ -37,12 +51,8 @@ router.get('/random', (req, res) => {
     .catch(err => {
       console.log(err);
     });
-
-  // res.status(200).json({ random: 'Random question sent' });
-  // console.log('Random question sent');
 });
 
-//https://learning-system-fabian.herokuapp.com
-// /question/details/5a6efc56ce10e66a971b5f08
+// https://chrome-extension-app.herokuapp.com/
 
 module.exports = router;
