@@ -20,7 +20,7 @@ router.get(`/details/:id`, async (req, res) => {
 // Senging the entire database
 
 router.get('/all', (req, res) => {
-  Question.find({}, '-_id')
+  Question.find({}) // ,'-_id'
     .then(responsesArray => {
       res.status(200).json({ responsesArray });
     })
