@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 
 router.get(`/details/:id`, async (req, res) => {
   try {
-    var question = await Question.findById(req.params.id, `-password -__id`);
+    var question = await Question.findById(req.params.id);
     res.send(question);
   } catch (error) {
     console.log(error);
