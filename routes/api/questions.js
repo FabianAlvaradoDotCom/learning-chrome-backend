@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 
 router.get(`/details/:id`, async (req, res) => {
   try {
-    var question = await Question.findById(req.params.id);
+    var question = await Question.findById(req.params.id); // ,'-_id'
     res.send(question);
   } catch (error) {
     console.log(error);
@@ -34,7 +34,7 @@ router.post('/random', (req, res) => {
   let subject = req.body.subject;
   let randomPicked = Math.random();
 
-  Question.find({ subject }, '-_id')
+  Question.find({ subject }) // ,'-_id'
     .then(responsesArray => {
       res.status(200).json({
         numberofQuestions: responsesArray.length,
